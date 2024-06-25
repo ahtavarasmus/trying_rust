@@ -88,5 +88,10 @@ fn main() {
 
     println!("fib(10): {}", fib(10));
 
+    let array = [1,2,3,4,5];
+    if 4 in array {
+        println!("4 is in array");
+    }
+
    
 }
