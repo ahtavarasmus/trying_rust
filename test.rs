@@ -89,9 +89,51 @@ fn main() {
     println!("fib(10): {}", fib(10));
 
     let array = [1,2,3,4,5];
-    if 4 in array {
-        println!("4 is in array");
+    for i in array {
+        println!("{}", i);
     }
 
+    for i in 0..5 {
+        println!("{}", array[i]);
+    }
+
+    let val = if true {
+        5
+    } else {
+        6
+    };
+    println!("val: {}", val);
+
+    // `while` loop
+    while 1 == 1 {
+        println!("The universe is operating normally.");
+        // break statement gets out of the while loop.
+        //  It avoids useless iterations.
+        break
+    }
+
+    // Infinite loop
+    loop {
+        println!("Hello!");
+        // break statement gets out of the loop
+        break
+    }
+
+    let mut mine: Box<i32> = Box::new(5);
+    *mine = 6;
+    println!("mine: {}", mine);
+    let mut now_its_mine = mine;
+    *now_its_mine = 7;
+    println!("now_its_mine: {}", now_its_mine);
+    //println!("{}", mine);
+
+    let mut var = 4;
+    var = 5;
+    let ref_val: &i32 = &var;
+    println!("var: {}, ref_val: {}", var, ref_val);
    
+    let mut var2 = 5;
+    let ref_val2: &mut i32 = &mut var2;
+    *ref_val2 = 6;
+    println!("ref_val2: {}", ref_val2);
 }
