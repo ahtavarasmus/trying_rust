@@ -136,4 +136,8 @@ fn main() {
     let ref_val2: &mut i32 = &mut var2;
     *ref_val2 = 6;
     println!("ref_val2: {}", ref_val2);
+
+    if let this = true {
+        println!("this: {}", this);
+    }
 }
