@@ -5,7 +5,7 @@ use std::net::SocketAddr;
 
 #[tokio::main]
 async fn main() {
-    let app = Router::new().route("/", get(handler));
+    let app = Router::new().route("/", get(get_home));
 
     let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
     println!("listening on {}", addr);
@@ -17,15 +17,15 @@ async fn main() {
 
 // `Deserialize` need be implemented to use with `Query` extractor.
 #[derive(Deserialize)]
-struct RangeParameters {
-    start: usize,
-    end: usize,
+struct HomeParameters {
+    firstname: String,
+    lastname: String
 }
 
-async fn handler(Query(range): Query<RangeParameters>) -> Html<String> {
-    // Generate a random number in range parsed from query.
-    let random_number = thread_rng().gen_range(range.start..range.end);
+
+async fn get_home(Query(pars): Query<HomeParameters>) -> Html<String> {
+    let random_number = thread_rng().gen_range(0..10);
 
     // Send response in html format.
-    Html(format!("<h1>Random Number: {}</h1>", random_number))
+    Html(format!("<h1>Hey {} {}, your lucky number is {}!</h1>", pars.firstname, pars.lastname, random_number))
 }
