@@ -26,6 +26,6 @@ struct HomeParameters {
 async fn get_home(Query(pars): Query<HomeParameters>) -> Html<String> {
     let random_number = thread_rng().gen_range(0..10);
 
-    // Send response in html format.
+    // Send response in html templates.
     Html(format!("<h1>Hey {} {}, your lucky number is {}!</h1>", pars.firstname, pars.lastname, random_number))
 }
